@@ -1,0 +1,57 @@
+
+<header>
+<h1>Issues from <time>{stats.endkey}</time> to <time>{stats.startkey}</time><h1>
+<nav>
+<ul>
+	<!-- view is sorted descending so endkey is start date. -->
+	<li><a href="/?endkey=%222011-07-01T00:00:00Z%22&amp;startkey=%222011-07-08T00:00:00Z%22">Iteration 5</a></li>
+	<li><a href="/?endkey=%222011-06-24T00:00:00Z%22&amp;startkey=%222011-07-01T00:00:00Z%22">Iteration 4</a></li>
+	<li><a href="/?endkey=%222011-06-17T00:00:00Z%22&amp;startkey=%222011-06-24T00:00:00Z%22">Iteration 3</a></li>
+	<li><a href="/?endkey=%222011-06-10T00:00:00Z%22&amp;startkey=%222011-06-17T00:00:00Z%22">Iteration 2</a></li>
+	<li><a href="/?endkey=%222011-06-03T00:00:00Z%22&amp;startkey=%222011-06-10T00:00:00Z%22">Iteration 1</a></li>
+  <li><a href="/">All</a>
+</ul>
+</nav>
+</header>
+
+<article id="article1" class="issues">
+	<div class="articleBody">
+	<header>
+	<h2>Opened {stats.opened_count} issues, {stats.opened_points} points</h2>
+	</header>
+	{?opened}
+		{#opened}
+		<ul>
+		<li><a href="{value.doc.html_url}">#{id}</a> 
+		<span class="difficulty">({value.difficulty})</span></li>
+		<li>{value.doc.title}</li>
+		<li class="created_at">Created {value.doc.created_at}</li>
+		</ul>
+		{/opened}
+		{:else}
+		<p>No opened issues.</p>
+	{/opened}
+	</div>
+</article>
+
+
+<article id="article2" class="issues">
+	<div class="articleBody">
+	<header>
+	<h2>Closed {stats.closed_count} issues, {stats.closed_points} points</h2>
+	</header>
+	{?closed}
+		{#closed}
+		<ul>
+		<li><a href="{value.doc.html_url}">#{id}</a> 
+		<span class="difficulty">({value.difficulty})</span></li>
+		<li>{value.doc.title}</li>
+		<li class="created_at">Created {value.doc.created_at}</li>
+		<li class="closed_at">Closed {value.doc.closed_at}</li>
+		</ul>
+		{/closed}
+		{:else}
+		<p>No closed issues for this .</p>
+		{/closed}
+	</div>
+</article>

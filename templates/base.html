@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>{title}</title> 
+        <link rel="stylesheet" type="text/css" href="{baseURL}/static/css/base.css" />
+    </head>
+    
+    <body>
+        <section id="content"> 
+        <!-- A new section with the articles -->
+        {content|s}
+        </section>
+        </section>
+    </body>
+    <script src="{baseURL}/static/js/jquery-1.5.2.min.js"></script>
+    <script src="{baseURL}/static/js/json2.js"></script>
+    <script src="{baseURL}/kanso.js"></script>
+    <!--[if IE]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <style type="text/css">
+    .clear {
+      zoom: 1;
+      display: block;
+    }
+    </style>
+    <![endif]-->
+</html>
