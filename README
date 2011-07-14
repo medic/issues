@@ -1,3 +1,4 @@
+Work in progress, this app is not generally useful (yet).
 
 To get Kanso github issues into your couch do:
   ./update.sh <db url> 
