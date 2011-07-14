@@ -1,5 +1,7 @@
 Work in progress, this app is not generally useful (yet).
 
+Requires Kanso >= 0.0.8.
+
 To get Kanso github issues into your couch do:
   ./update.sh <db url> 
   

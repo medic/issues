@@ -31,6 +31,5 @@ fi
 ./fetch.js 'https://api.github.com/repos/caolan/kanso/issues?state=closed' >> $DATADIR/all-$DATE.json &&
 # hack to remove extra arrays from json
 sed -i.bak 's/\]\[/,/g' $DATADIR/all-$DATE.json &&
-# hack until kanso transform set-ids gets into main branch
-~/dev/kanso-issues/bin/kanso transform set-ids -s 'number' ../issues/$DATADIR/all-$DATE.json ../issues/$DATADIR/all-$DATE-transformed.json &&
-~/dev/kanso-issues/bin/kanso pushdata -f $DBURL ../issues/$DATADIR/all-$DATE-transformed.json
+kanso transform map -m 'munge.js' $DATADIR/all-$DATE.json $DATADIR/all-$DATE-munged.json &&
+kanso pushdata -f $DBURL $DATADIR/all-$DATE-munged.json
