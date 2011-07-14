@@ -22,7 +22,7 @@
 	{?opened}
 		{#opened}
 		<ul>
-		<li><a href="{value.doc.html_url}">#{id}</a> 
+		<li><a href="{value.doc.html_url}">{id}</a> 
 		<span class="difficulty">({value.difficulty})</span>
 		{?value.doc.is_pull_request}<span class="pull_request">
 			pull request
@@ -47,7 +47,7 @@
 	{?closed}
 		{#closed}
 		<ul>
-		<li><a href="{value.doc.html_url}">#{id}</a> 
+		<li><a href="{value.doc.html_url}">{id}</a> 
 		<span class="difficulty">({value.difficulty})</span>
 		{?value.doc.is_pull_request}<span class="pull_request">
 			pull request

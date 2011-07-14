@@ -38,6 +38,7 @@ section article div {
 .article1 ul:nth-child(even) {background: #EEE}
 .created_at, .closed_at {
   font-size: .8em;
+	color: #999;
 }
 .pull_request {
 	color: #444;
