@@ -39,3 +39,9 @@ section article div {
 .created_at, .closed_at {
   font-size: .8em;
 }
+.pull_request {
+	color: #444;
+	background-color: #edd;
+	padding: .165em;
+	font-size: .8em;
+}

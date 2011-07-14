@@ -23,9 +23,13 @@
 		{#opened}
 		<ul>
 		<li><a href="{value.doc.html_url}">#{id}</a> 
-		<span class="difficulty">({value.difficulty})</span></li>
+		<span class="difficulty">({value.difficulty})</span>
+		{?value.doc.is_pull_request}<span class="pull_request">
+			pull request
+		</span>{/value.doc.is_pull_request}
+		</li>
 		<li>{value.doc.title}</li>
-		<li class="created_at">Created {value.doc.created_at}</li>
+		<li class="created_at">Created <time>{value.doc.created_at}</time></li>
 		</ul>
 		{/opened}
 		{:else}
@@ -44,14 +48,18 @@
 		{#closed}
 		<ul>
 		<li><a href="{value.doc.html_url}">#{id}</a> 
-		<span class="difficulty">({value.difficulty})</span></li>
+		<span class="difficulty">({value.difficulty})</span>
+		{?value.doc.is_pull_request}<span class="pull_request">
+			pull request
+		</span>{/value.doc.is_pull_request}
+		</li>
 		<li>{value.doc.title}</li>
-		<li class="created_at">Created {value.doc.created_at}</li>
-		<li class="closed_at">Closed {value.doc.closed_at}</li>
+		<li class="created_at">Created <time>{value.doc.created_at}</time></li>
+		<li class="closed_at">Closed <time>{value.doc.closed_at}</time></li>
 		</ul>
 		{/closed}
 		{:else}
-		<p>No closed issues for this .</p>
+		<p>No closed issues.</p>
 		{/closed}
 	</div>
 </article>

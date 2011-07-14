@@ -9,7 +9,3 @@ To get Kanso github issues into your couch do:
 To get the web interface up do:
   kanso push <db url> 
 
-TODO
------
-( ) Create new unique key for issues based on repo-number
-( ) Tag pull requests
