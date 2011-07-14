@@ -3,13 +3,13 @@ Work in progress, this app is not generally useful (yet).
 Requires Kanso >= 0.0.8.
 
 To get Kanso github issues into your couch do:
-  ./update.sh <db url> 
+  cd issues
+  bin/update.sh <db url> 
   
 To get the web interface up do:
   kanso push <db url> 
 
 TODO
 -----
-( ) Update to use new kanso transform mapping features
 ( ) Create new unique key for issues based on repo-number
 ( ) Tag pull requests

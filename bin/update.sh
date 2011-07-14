@@ -2,13 +2,14 @@
 
 #
 # Runs the github fetch sequence. Saves json data into the data directory and
-# does a transform with kanso to make it a valid couch document.
+# does a transform with kanso.
 #
 
 DATE=`date +%Y%m%d` 
 DBURL=$1
 DATADIR=data/
-# strip slashes and junk from data dir ending
+# strip slashes and junk from data dir ending (possibly useful in future if we
+# accept data dir as an arg)
 DATADIR=`echo "$DATADIR" | sed 's/[^a-zA-Z0-9]*$//g'`
 
 if [ -z $DBURL ]; then
@@ -27,8 +28,8 @@ if [ ! -f kanso.json ]; then
     exit 1
 fi
 
-./fetch.js 'https://api.github.com/repos/caolan/kanso/issues' > $DATADIR/all-$DATE.json &&
-./fetch.js 'https://api.github.com/repos/caolan/kanso/issues?state=closed' >> $DATADIR/all-$DATE.json &&
+bin/fetch.js 'https://api.github.com/repos/caolan/kanso/issues' > $DATADIR/all-$DATE.json &&
+bin/fetch.js 'https://api.github.com/repos/caolan/kanso/issues?state=closed' >> $DATADIR/all-$DATE.json &&
 # hack to remove extra arrays from json
 sed -i.bak 's/\]\[/,/g' $DATADIR/all-$DATE.json &&
 kanso transform map -m 'munge.js' $DATADIR/all-$DATE.json $DATADIR/all-$DATE-munged.json &&
