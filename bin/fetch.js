@@ -29,27 +29,29 @@ var fetch = function(options) {
     var req = https.get(options, function(res) {
       console.error("Got response: " + res.statusCode);
       console.error(["Got response headers: ", res.headers]);
-      var links = res.headers.link.split(',');
-      var url1 = url.parse(links[0].split(';')[0].replace(/[<>\s]/g,''));
-      var url2 = url.parse(links[1].split(';')[0].replace(/[<>\s]/g,''));
-      if (maxloop == count) {
-        console.error("Reached max recursion. Exiting."); 
-        process.exit(); 
-      }
-      // recursively fetch other pages
-      if (!pages[url1]) {
-        pages[url1] = true; // save url
-        options.host = url1.host;
-        options.path = url1.pathname + url1.search;
-        console.error(['url1 is new', url1]);
-        fetch(options);
-      }
-      if (!pages[url2]) {
-        pages[url2] = true;
-        options.host = url2.host;
-        options.path = url2.pathname + url2.search;
-        console.error(['url2 is new', url2]);
-        fetch(options);
+      if (res.headers.link !== undefined) {
+          var links = res.headers.link.split(',');
+          var url1 = url.parse(links[0].split(';')[0].replace(/[<>\s]/g,''));
+          var url2 = url.parse(links[1].split(';')[0].replace(/[<>\s]/g,''));
+          if (maxloop == count) {
+            console.error("Reached max recursion. Exiting."); 
+            process.exit(); 
+          }
+          // recursively fetch other pages
+          if (!pages[url1]) {
+            pages[url1] = true; // save url
+            options.host = url1.host;
+            options.path = url1.pathname + url1.search;
+            console.error(['url1 is new', url1]);
+            fetch(options);
+          }
+          if (!pages[url2]) {
+            pages[url2] = true;
+            options.host = url2.host;
+            options.path = url2.pathname + url2.search;
+            console.error(['url2 is new', url2]);
+            fetch(options);
+          }
       }
       res.on('data', function(d) {
         process.stdout.write(d);
