@@ -41,8 +41,12 @@ section article div {
 	color: #999;
 }
 .pull_request {
-	color: #444;
-	background-color: #edd;
+	color: #555;
+	/* hot #FF704F */
+	/* fresh #FFD266 */
+	/* cool #B2D0DD */
+	/* stale #D0D0D0 */
+	background-color: #FFD266;
 	padding: .165em;
 	font-size: .8em;
 }
