@@ -9,6 +9,3 @@ To get Kanso github issues into your couch do:
 To get the web interface up do:
   kanso push <db url> 
 
-TODO
-----
-Create an actual nav.
