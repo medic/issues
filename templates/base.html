@@ -7,13 +7,42 @@
     </head>
     
     <body>
+				<nav>
+				<ul>
+					<li>Iterations:</li>
+					<!-- view is sorted descending so endkey is start date. -->
+					<li><a href="/?endkey=%222011-08-12T00:00:00Z%22&amp;startkey=%222011-08-19T00:00:00Z%22">11</a></li>
+					<li><a href="/?endkey=%222011-08-05T00:00:00Z%22&amp;startkey=%222011-08-12T00:00:00Z%22">10</a></li>
+					<li><a href="/?endkey=%222011-07-29T00:00:00Z%22&amp;startkey=%222011-08-05T00:00:00Z%22">9</a></li>
+					<li><a href="/?endkey=%222011-07-22T00:00:00Z%22&amp;startkey=%222011-07-29T00:00:00Z%22">8</a></li>
+					<li><a href="/?endkey=%222011-07-15T00:00:00Z%22&amp;startkey=%222011-07-22T00:00:00Z%22">7</a></li>
+					<li><a href="/?endkey=%222011-07-08T00:00:00Z%22&amp;startkey=%222011-07-15T00:00:00Z%22">6</a></li>
+					<li><a href="/?endkey=%222011-07-01T00:00:00Z%22&amp;startkey=%222011-07-08T00:00:00Z%22">5</a></li>
+					<li><a href="/?endkey=%222011-06-24T00:00:00Z%22&amp;startkey=%222011-07-01T00:00:00Z%22">4</a></li>
+					<li><a href="/?endkey=%222011-06-17T00:00:00Z%22&amp;startkey=%222011-06-24T00:00:00Z%22">3</a></li>
+					<li><a href="/?endkey=%222011-06-10T00:00:00Z%22&amp;startkey=%222011-06-17T00:00:00Z%22">2</a></li>
+					<li><a href="/?endkey=%222011-06-03T00:00:00Z%22&amp;startkey=%222011-06-10T00:00:00Z%22">1</a></li>
+					<li><a href="/">All</a>
+				</ul>
+				</nav>
         <section id="content"> 
         <!-- A new section with the articles -->
         {content|s}
         </section>
+				<!--article>
+					<div class="articleBody" id="chart" style="height: 200px; width: 400px;">
+						<p>chart goes here</p>
+					</div>
+					<p>
+						<input class="fetchSeries" type="button" value="fetch"> -
+						<a href="http://people.iola.dk/olau/flot/examples/data-eu-gdp-growth.json">data</a> -
+						<span>Fetched Europe (EU27), first point: (1999, 3)</span>
+					</p>
+				</article-->
         </section>
     </body>
     <script src="{baseURL}/static/js/jquery-1.5.2.min.js"></script>
+    <!--script src="{baseURL}/static/js/jquery.flot.js"></script-->
     <script src="{baseURL}/static/js/json2.js"></script>
     <script src="{baseURL}/kanso.js"></script>
     <!--[if IE]>
@@ -25,4 +54,54 @@
     }
     </style>
     <![endif]-->
+
+		<script type="text/javascript">
+		$(function () {
+				var options = {
+						lines: { show: true },
+						points: { show: true },
+						xaxis: { tickDecimals: 0, tickSize: 1 }
+				};
+				var data = [];
+				var placeholder = $("#chart");
+				
+				$.plot(placeholder, data, options);
+
+				
+				// fetch one series, adding to what we got
+				var alreadyFetched = {};
+				
+				$(".fetchSeries").click(function () {
+						var button = $(this);
+						
+						// find the URL in the link right next to us 
+						var dataurl = button.siblings('a').attr('href');
+
+						// then fetch the data with jQuery
+						function onDataReceived(series) {
+								// extract the first coordinate pair so you can see that
+								// data is now an ordinary Javascript object
+								var firstcoordinate = '(' + series.data[0][0] + ', ' + series.data[0][1] + ')';
+
+								button.siblings('span').text('Fetched ' + series.label + ', first point: ' + firstcoordinate);
+
+								// let's add it to our current data
+								if (!alreadyFetched[series.label]) {
+										alreadyFetched[series.label] = true;
+										data.push(series);
+								}
+								
+								// and plot all we got
+								$.plot(placeholder, data, options);
+						 }
+						
+						$.ajax({
+								url: dataurl,
+								method: 'GET',
+								dataType: 'json',
+								success: onDataReceived
+						});
+				});
+		});
+		</script>
 </html>

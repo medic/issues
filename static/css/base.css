@@ -3,11 +3,10 @@
 	margin:0;
 	padding:0;
 }
-
 header,footer,
 article,section,
 hgroup,nav,
-figure{
+figure {
 	/* Giving a display value to the HTML5 rendered elements: */
 	display:block;
 }
@@ -16,28 +15,49 @@ body{
 	/* Setting the default text color, size, page background and a font stack: */
 	font-size:0.825em;
 	font-family:Arial, Helvetica, sans-serif;
+	padding: .345em;
+}
+h2 {
+	font-size: 1.25em;
+}
+h3 {
+	font-size: 1em;
 }
 nav{
 	padding:0 5px;
-	border:1px solid #FCFCFC;
+	background-color: #fff;
+	font-size: 1.456em;
 }
 nav li {
   display: inline;
 }
-section article {
+nav li a {
+	border:1px solid #aaa;
+	background-color: #eee;
+	padding: .25em;
+	text-decoration: none;
+	border-radius: .25em;
+	-moz-border-radius: .25em;
+	-webkit-border-radius: .25em;
+}
+article {
 	float: left;
-  width: 350px;
+  width: 375px;
+	font-size: 1.235em;
 }
 ul {
   padding: .65em 0;
   list-style-type: none;
 }
-section article div {
+ul .title {
+	padding: .534em 0;
+}
+article div {
 	padding: 1em;
 }
 .article1 ul:nth-child(even) {background: #EEE}
 .created_at, .closed_at {
-  font-size: .8em;
+  font-size: .726em;
 	color: #999;
 }
 .pull_request {
@@ -49,4 +69,9 @@ section article div {
 	background-color: #FFD266;
 	padding: .165em;
 	font-size: .8em;
+}
+#placeholder {
+	width:400px;
+	height:150px;
+	background-color: #234;
 }

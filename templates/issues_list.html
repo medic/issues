@@ -1,19 +1,4 @@
 
-<header>
-<h1>Issues from <time>{stats.endkey}</time> to <time>{stats.startkey}</time><h1>
-<nav>
-<ul>
-	<!-- view is sorted descending so endkey is start date. -->
-	<li><a href="/?endkey=%222011-07-08T00:00:00Z%22&amp;startkey=%222011-07-15T00:00:00Z%22">Iteration 6</a></li>
-	<li><a href="/?endkey=%222011-07-01T00:00:00Z%22&amp;startkey=%222011-07-08T00:00:00Z%22">Iteration 5</a></li>
-	<li><a href="/?endkey=%222011-06-24T00:00:00Z%22&amp;startkey=%222011-07-01T00:00:00Z%22">Iteration 4</a></li>
-	<li><a href="/?endkey=%222011-06-17T00:00:00Z%22&amp;startkey=%222011-06-24T00:00:00Z%22">Iteration 3</a></li>
-	<li><a href="/?endkey=%222011-06-10T00:00:00Z%22&amp;startkey=%222011-06-17T00:00:00Z%22">Iteration 2</a></li>
-	<li><a href="/?endkey=%222011-06-03T00:00:00Z%22&amp;startkey=%222011-06-10T00:00:00Z%22">Iteration 1</a></li>
-  <li><a href="/">All</a>
-</ul>
-</nav>
-</header>
 
 <article id="article1" class="issues">
 	<div class="articleBody">
@@ -23,13 +8,13 @@
 	{?opened}
 		{#opened}
 		<ul>
-		<li><a href="{value.doc.html_url}">{id}</a> 
+		<li class="html_url"><a href="{value.doc.html_url}">{id}</a> 
 		<span class="difficulty">({value.difficulty})</span>
 		{?value.doc.is_pull_request}<span class="pull_request">
 			pull request
 		</span>{/value.doc.is_pull_request}
 		</li>
-		<li>{value.doc.title}</li>
+		<li class="title">{value.doc.title}</li>
 		<li class="created_at">Created <time>{value.doc.created_at}</time></li>
 		</ul>
 		{/opened}
@@ -48,15 +33,15 @@
 	{?closed}
 		{#closed}
 		<ul>
-		<li><a href="{value.doc.html_url}">{id}</a> 
+		<li class="html_url"><a href="{value.doc.html_url}">{id}</a> 
 		<span class="difficulty">({value.difficulty})</span>
 		{?value.doc.is_pull_request}<span class="pull_request">
 			pull request
 		</span>{/value.doc.is_pull_request}
 		</li>
-		<li>{value.doc.title}</li>
-		<li class="created_at">Created <time>{value.doc.created_at}</time></li>
+		<li class="title">{value.doc.title}</li>
 		<li class="closed_at">Closed <time>{value.doc.closed_at}</time></li>
+		<li class="created_at">Created <time>{value.doc.created_at}</time></li>
 		</ul>
 		{/closed}
 		{:else}
@@ -64,3 +49,13 @@
 		{/closed}
 	</div>
 </article>
+
+<article id="article3" class="issues">
+	<div class="articleBody">
+	<header>
+	<h3>Start time: <time>{stats.endkey}</time></h3>
+	<h3>End time: <time>{stats.startkey}</time></h3>
+	</header>
+	</div>
+</article>
+
