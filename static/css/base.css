@@ -40,9 +40,6 @@ nav li a {
 	-moz-border-radius: .25em;
 	-webkit-border-radius: .25em;
 }
-nav .active {
-	background-color: yellow;
-}
 article {
 	float: left;
   width: 375px;
