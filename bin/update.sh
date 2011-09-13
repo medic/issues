@@ -32,6 +32,8 @@ bin/fetch.js 'https://api.github.com/repos/caolan/kanso/issues' > $DATADIR/all-$
 bin/fetch.js 'https://api.github.com/repos/caolan/kanso/issues?state=closed' >> $DATADIR/all-$DATE.json &&
 bin/fetch.js 'https://api.github.com/repos/medic/medicdashboard/issues' >> $DATADIR/all-$DATE.json &&
 bin/fetch.js 'https://api.github.com/repos/medic/medicdashboard/issues?state=closed' >> $DATADIR/all-$DATE.json &&
+bin/fetch.js 'https://api.github.com/repos/medic/kuvela/issues' >> $DATADIR/all-$DATE.json &&
+bin/fetch.js 'https://api.github.com/repos/medic/kuvela/issues?state=closed' >> $DATADIR/all-$DATE.json &&
 # hack to remove extra arrays from json
 sed -i.bak 's/\]\[/,/g' $DATADIR/all-$DATE.json &&
 kanso transform map -m 'munge.js' $DATADIR/all-$DATE.json $DATADIR/all-$DATE-munged.json &&
