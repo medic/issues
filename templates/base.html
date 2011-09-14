@@ -32,6 +32,11 @@
     <script src="{baseURL}/static/js/jquery-1.5.2.min.js"></script>
     <!--script src="{baseURL}/static/js/jquery.flot.js"></script-->
     <script src="{baseURL}/static/js/json2.js"></script>
+		<script src="{baseURL}/static/js/raphael.js"></script>
+		<script src="{baseURL}/static/js/g.raphael.js"></script>
+		<script src="{baseURL}/static/js/g.bar.js"></script>
+		<script src="{baseURL}/static/js/g.pie.js"></script>
+		<script src="{baseURL}/static/js/g.line.js"></script>
     <script src="{baseURL}/kanso.js"></script>
     <!--[if IE]>
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -48,8 +53,10 @@
 				$('#iterations a').live('click', function(ev) {
 						console.log('adding class');
 						var a = $(this);
+						var label = a.text();
 						a.parent().siblings().children('a').removeClass('active');
 						a.addClass('active');
+						//$('#article3').append('<h3>Iteration '+label+'</h3>');
 				});
 				$('#iterations').each(function(ev) {
 						var start = new Date('2011-05-30T00:00:00Z');
@@ -66,18 +73,18 @@
 							return ret;
 						}
 						function parse_date() {
-							var url = 'endkey="'+datestr(ispan[0]);
-							url += '"&amp;startkey="'+datestr(ispan[1])+'"';
-							return url;
-							//encodeURI(url);
+							var url = 'endkey="'+datestr(ispan[0])+'"&amp;';
+							url += 'startkey="'+datestr(ispan[1])+'"';
+							//return url;
+							return encodeURI(url);
 						}
 						// update nav buttons
 						while (start < end) {
 							inum++;
-							ispan = [
-									start, new Date(start.getTime() + (60 * 60 * 24 * 7 * 1000))];
+							ispan[0] = start;
+							ispan[1] = new Date(start.getTime() + (60 * 60 * 24 * 7 * 1000));
 							$(this).append(
-								'<li><a href=\'/?'+parse_date()+'\'>'+inum+'</a></li>');
+								'<li><a href="/?'+parse_date()+'">'+inum+'</a></li>');
 							start = ispan[1];
 						}
 				});

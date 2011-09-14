@@ -12,7 +12,7 @@
         "modules": null,
         "kanso-core": null,
         "kanso-templates": null,
-        "kanso-types": null,
-        "kanso-forms": null
+        "kanso-forms": null,
+        "kanso-types": null
     }
 }
