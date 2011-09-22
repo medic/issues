@@ -1,11 +1,11 @@
-Work in progress, this app is not generally useful (yet).
-
 Requires Kanso >= 0.0.8.
 
-To get Kanso github issues into your couch do:
-  cd issues
-  bin/update.sh <db url> 
+To get Medic github issues into your couch do:
+  1) cd issues
+  2) Edit username/password to authenticate with github:
+      vi bin/fetch.js
+  3) Runs the fetch/transform/push of the github data:
+      bin/update.sh <db url> 
   
 To get the web interface up do:
   kanso push <db url> 
-
