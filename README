@@ -9,3 +9,8 @@ To get Medic github issues into your couch do:
   
 To get the web interface up do:
   kanso push <db url> 
+
+The log dir exists as a place to put your cron output. Here is an example
+crontab entry that runs every 8 hours.  Rotation TBD.
+
+00 */8 * * * cd /home/mandric/dev/issues && export PATH=/home/mandric/local/bin:$PATH && bin/update.sh http://localhost:59844/issues >> /home/mandric/dev/issues/log/cron.log 2>&1 
