@@ -38,7 +38,7 @@ var fetch = function(options) {
       //console.error(["Got headers: ", res.headers]);
       if (res.statusCode !== 200) {
           console.error('Request failed '+ res.headers.status);
-          console.error('You might need to modify the script to authenticate properly.');
+          console.error('Try modifying fetch.js script to authenticate properly.');
           process.exit(1);
       }
       res.on('data', function(d) {
