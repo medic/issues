@@ -34,8 +34,13 @@ var fetch = function(options) {
     var current = url.parse(options.path);
     count += 1;
     var req = https.get(options, function(res) {
-      console.error("Got response: " + res.statusCode);
-      console.error(["Got response headers: ", res.headers]);
+      //console.error("Got response: " + res.statusCode);
+      //console.error(["Got headers: ", res.headers]);
+      if (res.statusCode !== 200) {
+          console.error('Request failed '+ res.headers.status);
+          console.error('You might need to modify the script to authenticate properly.');
+          process.exit(1);
+      }
       res.on('data', function(d) {
         process.stdout.write(d);
       });
