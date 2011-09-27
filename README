@@ -1,5 +1,6 @@
 Requires Kanso >= 0.0.8.
 
+
 To get Medic github issues into your couch do:
   1) cd issues
   2) Edit username/password to authenticate with github:
