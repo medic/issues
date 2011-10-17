@@ -1,6 +1,8 @@
 {
     "name": "issues",
     "load": "lib/app",
+    "version": "0.0.1",
+    "description": "Medic Mobile Github Issues Tracker",
     "modules": ["lib"],
     "templates": "templates",
     "attachments": "static",
