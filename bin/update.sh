@@ -28,16 +28,18 @@ if [ ! -f kanso.json ]; then
     exit 1
 fi
 
-bin/fetch.js 'https://api.github.com/repos/caolan/kanso/issues' > $DATADIR/all-$DATE.json &&
-bin/fetch.js 'https://api.github.com/repos/caolan/kanso/issues?state=closed' >> $DATADIR/all-$DATE.json &&
-bin/fetch.js 'https://api.github.com/repos/medic/medicdashboard/issues' >> $DATADIR/all-$DATE.json &&
-bin/fetch.js 'https://api.github.com/repos/medic/medicdashboard/issues?state=closed' >> $DATADIR/all-$DATE.json &&
+bin/fetch.js 'https://api.github.com/repos/kanso/kanso/issues' > $DATADIR/all-$DATE.json &&
+bin/fetch.js 'https://api.github.com/repos/kanso/kanso/issues?state=closed' >> $DATADIR/all-$DATE.json &&
+bin/fetch.js 'https://api.github.com/repos/medic/kujua/issues' >> $DATADIR/all-$DATE.json &&
+bin/fetch.js 'https://api.github.com/repos/medic/kujua/issues?state=closed' >> $DATADIR/all-$DATE.json &&
 bin/fetch.js 'https://api.github.com/repos/medic/kujua-acceptance/issues' >> $DATADIR/all-$DATE.json &&
 bin/fetch.js 'https://api.github.com/repos/medic/kujua-acceptance/issues?state=closed' >> $DATADIR/all-$DATE.json &&
-bin/fetch.js 'https://api.github.com/repos/medic/kuvela/issues' >> $DATADIR/all-$DATE.json &&
-bin/fetch.js 'https://api.github.com/repos/medic/kuvela/issues?state=closed' >> $DATADIR/all-$DATE.json &&
+bin/fetch.js 'https://api.github.com/repos/medic/muvuku/issues' >> $DATADIR/all-$DATE.json &&
+bin/fetch.js 'https://api.github.com/repos/medic/muvuku/issues?state=closed' >> $DATADIR/all-$DATE.json &&
 bin/fetch.js 'https://api.github.com/repos/medic/issues/issues' >> $DATADIR/all-$DATE.json &&
 bin/fetch.js 'https://api.github.com/repos/medic/issues/issues?state=closed' >> $DATADIR/all-$DATE.json &&
+bin/fetch.js 'https://api.github.com/repos/medic/kujua-export/issues' >> $DATADIR/all-$DATE.json &&
+bin/fetch.js 'https://api.github.com/repos/medic/kujua-export/issues?state=closed' >> $DATADIR/all-$DATE.json &&
 bin/fetch.js 'https://api.github.com/repos/browndav/ui/issues' >> $DATADIR/all-$DATE.json &&
 bin/fetch.js 'https://api.github.com/repos/browndav/ui/issues?state=closed' >> $DATADIR/all-$DATE.json &&
 # hack to remove extra arrays from json
